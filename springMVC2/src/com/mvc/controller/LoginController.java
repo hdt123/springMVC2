@@ -5,6 +5,7 @@ import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mvc.entity.User;
+import com.mvc.service.UserService;
 import com.mvc.util.ImageUtil;
 import com.mvc.util.JsonUtils;
 
@@ -20,10 +23,16 @@ import com.mvc.util.JsonUtils;
 @Controller
 public class LoginController{
 
+	@Resource
+	private UserService userService;
+	
 	@RequestMapping("/createImage.do")
 	public void createImage(
 			HttpServletResponse response, HttpSession session)
 			throws Exception {
+		
+		User u = userService.findById(1);
+		System.out.println(u.getUsername());
 		Map<String, BufferedImage> imageMap = ImageUtil.createImage();
 		String code = imageMap.keySet().iterator().next();
 		session.setAttribute("imageCode", code);

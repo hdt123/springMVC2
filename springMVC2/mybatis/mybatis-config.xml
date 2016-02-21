@@ -5,6 +5,6 @@
 		<package name="com.mvc.entity" />
 	</typeAliases>
 	<mappers>
-		 <package name="com.mvc.dao"/>
+		 <package name="com/mvc/dao/user-mybatis.xml"/>
 	</mappers>
 </configuration> 

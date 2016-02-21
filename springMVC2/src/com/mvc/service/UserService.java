@@ -1,9 +1,9 @@
-package com.mvc.dao;
+package com.mvc.service;
 
 import com.mvc.entity.User;
 
+public interface UserService {
 
-public interface IUserDao {
-
+	
 	User findById(Integer id);
 }
